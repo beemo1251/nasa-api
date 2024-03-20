@@ -1,0 +1,9 @@
+<div class="container mx-auto px-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="overflow-hidden rounded-lg" *ngFor="let data of dataNasa">
+          <img [src]="data.url" [alt]="data.title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" *ngIf="data.media_type == 'image'">
+          <iframe [src]="data.videoUrl" [title]="data.title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen *ngIf="data.media_type == 'video'"></iframe>
+      </div>
+      <!-- Repite el bloque anterior para cada imagen que quieras en la galería -->
+  </div>
+</div>
