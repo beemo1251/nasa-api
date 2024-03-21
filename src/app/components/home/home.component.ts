@@ -24,7 +24,7 @@ export class HomeComponent {
           video.forEach(element => {
             element.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(element.url + '?autoplay=1&mute=1');
           });
-          console.log(video);
+          // console.log(video);
         }
       },
       error: (error) => {
