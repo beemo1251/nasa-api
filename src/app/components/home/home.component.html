@@ -1,9 +1,22 @@
 <div class="container mx-auto px-4">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div class="section_search mb-6">
+    <form action="" class="flex items-center space-x-2">
+      <input class="w-full p-2 text-black border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" type="search" placeholder="Buscar..." [(ngModel)]="buscar" name="buscar">
+      <button class="px-4 py-2 text-white bg-teal-500 rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50" type="button" (click)="buscarFn()">
+        Buscar
+      </button>
+    </form>
+  </div>
+  <div *ngIf="vistaGrid == 'dataNasa'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <div class="overflow-hidden rounded-lg" *ngFor="let data of dataNasa">
           <img [src]="data.url" [alt]="data.title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" *ngIf="data.media_type == 'image'">
           <iframe [src]="data.videoUrl" [title]="data.title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen *ngIf="data.media_type == 'video'"></iframe>
       </div>
-      <!-- Repite el bloque anterior para cada imagen que quieras en la galería -->
+  </div>
+  <div *ngIf="vistaGrid == 'imageNasa'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="overflow-hidden rounded-lg" *ngFor="let data of imageNasa">
+        <img [src]="data.links[0].href" [alt]="data.data[0].title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" *ngIf="data.links">
+        <!-- <iframe [src]="data.videoUrl" [title]="data.title" class="w-full h-auto transform hover:scale-110 transition duration-500 ease-in-out" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen *ngIf="data.media_type == 'video'"></iframe> -->
+    </div>
   </div>
 </div>
